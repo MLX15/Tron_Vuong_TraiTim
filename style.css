@@ -1,0 +1,300 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+small {
+  width: 70px;
+  height: 30px;
+  background-color: #d34848;
+  right: 20px;
+  margin: auto;
+  border: 0;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 20px;
+}
+small:focus, small:active {
+  outline: 0;
+}
+small::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffcd60;
+  transition: 200ms;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 6px;
+}
+small::after {
+  content: "";
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  animation-name: titleOut;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  position: fixed;
+  text-align: center;
+  margin: auto;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+html div,
+html div::before,
+html div::after {
+  background-color: #d34848;
+  box-shadow: 0 0 0 2px #d34848;
+}
+
+div {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 0 0 2px black;
+  transform: rotate(-45deg);
+  animation-name: boxOut;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+div::after, div::before {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  content: "";
+  box-shadow: 0 0 0 2px black;
+  border-radius: 50%;
+}
+div::before {
+  top: -50px;
+  left: 0;
+  animation-name: circle1Out;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+div::after {
+  top: 0;
+  left: 50px;
+  animation-name: circle2Out;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+label input:checked ~ small {
+  background-color: #ffcd60;
+}
+label input:checked ~ small::before {
+  left: 45px;
+  background-color: #d34848;
+}
+label input:checked ~ div {
+  animation-name: boxIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+label input:checked ~ div::before {
+  animation-name: circle1In;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+label input:checked ~ div::after {
+  animation-name: circle2In;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+label input:checked ~ small::after {
+  animation-name: titleIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  position: fixed;
+  text-align: center;
+  margin: auto;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@keyframes boxOut {
+  0% {
+    background-color: #d34848;
+    box-shadow: 0 0 0 2px #d34848;
+  }
+  25% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+  }
+  50% {
+    box-shadow: 0 0 0 2px black;
+    transform: rotate(-45deg);
+  }
+  100% {
+    box-shadow: 0 0 0 2px black;
+    background-color: transparent;
+    transform: rotate(0);
+  }
+}
+@keyframes boxIn {
+  0% {
+    background-color: transparent;
+    transform: rotate(0);
+    box-shadow: 0 0 0 2px black;
+  }
+  25% {
+    background-color: transparent;
+    transform: rotate(0);
+    box-shadow: 0 0 0 2px black;
+  }
+  50% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-45deg);
+    background-color: #d34848;
+  }
+}
+@keyframes circle1Out {
+  0% {
+    background-color: #d34848;
+    box-shadow: 0 0 0 2px #d34848;
+  }
+  25% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+  }
+  50% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+    top: 0;
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+    top: 0;
+    left: calc(-100px - 20px);
+  }
+}
+@keyframes circle1In {
+  0% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+    top: 0;
+    left: calc(-100px - 20px);
+  }
+  25% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+    top: 0;
+    left: calc(-100px - 20px);
+  }
+  50% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+  }
+  100% {
+    background-color: #d34848;
+    box-shadow: 0 0 0 2px #d34848;
+    left: 0;
+  }
+}
+@keyframes circle2Out {
+  0% {
+    top: 0;
+    left: 50px;
+    background-color: #d34848;
+    box-shadow: 0 0 0 2px #d34848;
+  }
+  25% {
+    top: 0;
+    left: 50px;
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+  }
+  50% {
+    top: 0;
+    left: 50px;
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+    left: calc(100px + 20px);
+  }
+}
+@keyframes circle2In {
+  0% {
+    top: 0;
+    left: calc(100px + 20px);
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+  }
+  25% {
+    top: 0;
+    left: calc(100px + 20px);
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+  }
+  50% {
+    top: 0;
+    left: calc(100px + 20px);
+    background-color: transparent;
+    box-shadow: 0 0 0 2px black;
+  }
+  100% {
+    background-color: #d34848;
+    box-shadow: 0 0 0 2px #d34848;
+    left: 50px;
+  }
+}
+@keyframes titleOut {
+  0% {
+    content: ".";
+  }
+  25% {
+    content: "..";
+  }
+  50% {
+    content: "...";
+  }
+  100% {
+    content: "Nhấp vào ❤️ ";
+  }
+}
+@keyframes  titleIn {
+  0% {
+    content: ".";
+  }
+  25% {
+    content: "..";
+  }
+  50% {
+    content: "...";
+  }
+  100% {
+    content: "Anh yêu em nhiều lắm❤️❤️05.10.2021❤️❤️";
+  }
+}
